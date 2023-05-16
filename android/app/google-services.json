@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1061937836329",
+    "project_id": "mobil-proje-a37e3",
+    "storage_bucket": "mobil-proje-a37e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061937836329:android:2065fde08d641e3dbc0738",
+        "android_client_info": {
+          "package_name": "com.example.app_jam_deneme_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061937836329-iinqokg6ankrb7orura7qhvull57500m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJnS744fHC8jYBJyl3xKzfXEZYV7f9Q5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061937836329-iinqokg6ankrb7orura7qhvull57500m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
