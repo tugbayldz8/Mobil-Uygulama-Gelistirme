@@ -1,6 +1,7 @@
 import 'package:app_jam_deneme_1/home_page.dart';
 import 'package:app_jam_deneme_1/registerPage.dart';
 import 'package:app_jam_deneme_1/service/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,6 +14,38 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   AuthService _authService = AuthService();
+
+  Future<void> signIn(BuildContext context) async {
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Draw()));
+      print('Giriş başarılı: ${userCredential.user}');
+    } catch (e) {
+      // Giriş hatalı olduğunda yapılacak işlemler
+      print('Giriş hatalı: $e');
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Hata'),
+            content: Text('Email ya da şifre hatalı girdiniz!'),
+            actions: [
+              TextButton(
+                child: Text('Tamam'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,15 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         InkWell(
                           onTap: () {
-                            _authService
-                                .signIn(_emailController.text,
-                                    _passwordController.text)
-                                .then((value) {
-                              return Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Draw()));
-                            });
+                            signIn(context);
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 5),

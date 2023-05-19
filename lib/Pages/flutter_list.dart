@@ -32,7 +32,7 @@ class _FlutterListPageState extends State<FlutterListPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _service.connectNotgication();
+    _service.connectNotification();
   }
 
   @override

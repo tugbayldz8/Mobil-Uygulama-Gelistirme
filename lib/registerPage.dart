@@ -1,7 +1,6 @@
+import 'package:app_jam_deneme_1/home_page.dart';
 import 'package:app_jam_deneme_1/service/auth.dart';
 import 'package:flutter/material.dart';
-
-import '../main.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -9,6 +8,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController _nickNameController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -49,6 +49,34 @@ class _RegisterPageState extends State<RegisterPage> {
                         children: [
                           TextField(
                               controller: _nameController,
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                              cursorColor: Colors.white,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.person_outline_sharp,
+                                  color: Colors.white,
+                                ),
+                                hintText: 'Ad Soyad',
+                                prefixText: ' ',
+                                hintStyle: TextStyle(color: Colors.white),
+                                focusColor: Colors.white,
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: Colors.white,
+                                )),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: Colors.white,
+                                )),
+                              )),
+                          SizedBox(
+                            height: size.height * 0.02,
+                          ),
+                          TextField(
+                              controller: _nickNameController,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -164,13 +192,14 @@ class _RegisterPageState extends State<RegisterPage> {
                               _authService
                                   .createPerson(
                                       _nameController.text,
+                                      _nickNameController.text,
                                       _emailController.text,
                                       _passwordController.text)
                                   .then((value) {
                                 return Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => MyApp()));
+                                        builder: (context) => Draw()));
                               });
                             },
                             child: Container(

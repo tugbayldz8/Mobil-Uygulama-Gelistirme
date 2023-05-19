@@ -17,6 +17,9 @@ class _UnityAddPageState extends State<UnityAddPage> {
   TextEditingController projeDetayController = TextEditingController();
   StatusService _statusService = StatusService();
 
+  String? selectedValue;
+  List<String> dropdownItems = ['1-2', '2-3', '3-4', '4-5', '5-6'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,16 +74,24 @@ class _UnityAddPageState extends State<UnityAddPage> {
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     Expanded(
-                      child: Container(
-                        height: 300,
-                        child: SingleChildScrollView(
-                          child: TextField(
-                            style: TextStyle(fontSize: 20),
-                            controller: ekipSayisiController,
-                            keyboardType: TextInputType.number,
-                            maxLines: null,
-                          ),
-                        ),
+                      child: DropdownButton(
+                        hint: Text("Seçiniz"),
+                        value: selectedValue,
+                        items: dropdownItems.map((String value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(fontSize: 24),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedValue = newValue!;
+                            //saveSelectedValue(selectedValue!);
+                          });
+                        },
                       ),
                     ),
                   ],
@@ -119,9 +130,7 @@ class _UnityAddPageState extends State<UnityAddPage> {
                 child: InkWell(
                   onTap: () {
                     _statusService
-                        .addStatus(
-                            projeAlanController.text,
-                            ekipSayisiController.text,
+                        .addStatus(projeAlanController.text, selectedValue!,
                             projeDetayController.text ?? '')
                         .then((value) {
                       Fluttertoast.showToast(

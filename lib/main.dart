@@ -1,4 +1,4 @@
-import 'package:app_jam_deneme_1/profile_flutter.dart';
+import 'package:app_jam_deneme_1/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:grock/grock.dart';
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: Grock.navigationKey,
       debugShowCheckedModeBanner: false,
-      home: FProfilim(),
+      home: Draw(),
     );
   }
 }

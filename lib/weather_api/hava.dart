@@ -5,7 +5,7 @@ class Hava {
 
   Hava.fromJson(Map json) {
     this.kimlikNo = json['id'];
-    this.olay = json['main'];
+    this.olay = json['description'];
     this.ikon = json['icon'];
   }
 }

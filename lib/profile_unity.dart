@@ -4,6 +4,7 @@ import 'package:app_jam_deneme_1/views/konum.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
+import 'Pages/name_surname.dart';
 import 'Pages/unity_add.dart';
 import 'newDraw.dart';
 
@@ -24,11 +25,37 @@ class _UProfilimState extends State<UProfilim> {
   }
 
   Location location = Location();
+
+  String adSoyad = '';
+  String email = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getAdSoyad();
+    getEmail();
+  }
+
+  void getAdSoyad() async {
+    String result = await getAdSoyadFromFirestore();
+    setState(() {
+      adSoyad = result;
+    });
+  }
+
+  void getEmail() async {
+    String result = await getEmailFromFirestore();
+    setState(() {
+      email = result;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.grey.shade200,
           drawer: NewDraw(),
           appBar: AppBar(
@@ -48,14 +75,14 @@ class _UProfilimState extends State<UProfilim> {
                       ),
                       decoration: BoxDecoration(color: Colors.yellow),
                       width: 420,
-                      height: 161,
+                      height: 170,
                     ),
                     Positioned(left: 360, top: 200, child: Icon(Icons.edit)),
                   ],
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'TUĞBA YILDIZ',
+                  adSoyad,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 Container(width: 300, child: Divider(color: Colors.black)),
@@ -86,7 +113,7 @@ class _UProfilimState extends State<UProfilim> {
                                     color: Colors.black.withOpacity(0.5)),
                               ),
                               Text(
-                                'tugbaay@gmail.com',
+                                email,
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],

@@ -4,7 +4,7 @@ import 'package:grock/grock.dart';
 
 class FirebaseNotificationService {
   late final FirebaseMessaging messaging;
-  void settingNotifivatiob() async {
+  void settingNotification() async {
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
       sound: true,
@@ -13,7 +13,7 @@ class FirebaseNotificationService {
     print("${settings.authorizationStatus}");
   }
 
-  void connectNotgication() async {
+  void connectNotification() async {
     await Firebase.initializeApp();
     messaging = FirebaseMessaging.instance;
     messaging.setForegroundNotificationPresentationOptions(
@@ -21,7 +21,7 @@ class FirebaseNotificationService {
       sound: true,
       badge: true,
     );
-    settingNotifivatiob();
+    settingNotification();
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
       Grock.snackBar(
           title: "${event.notification?.title}",

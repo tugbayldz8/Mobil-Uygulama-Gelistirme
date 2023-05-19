@@ -21,7 +21,7 @@ class _KonumPageState extends State<KonumPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Konum'),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.grey.shade900,
         ),
         body: Center(
           child: Column(
@@ -40,9 +40,7 @@ class _KonumPageState extends State<KonumPage> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.green),
                 onPressed: () {
-                  getLocation();
-                  print(
-                      'x: ${geolocatorController.currentLocation?.latitude}, y: ${geolocatorController.currentLocation?.longitude}');
+                  LocGet();
                 },
                 child: Container(
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 40),
@@ -75,4 +73,15 @@ class _KonumPageState extends State<KonumPage> {
       }
     });
   }
+}
+
+void LocGet() async {
+  Position position = await Geolocator.getCurrentPosition(
+    desiredAccuracy: LocationAccuracy.high,
+  );
+
+  double latitude = position.latitude;
+  double longitude = position.longitude;
+
+  print('Enlem: $latitude, Boylam: $longitude');
 }

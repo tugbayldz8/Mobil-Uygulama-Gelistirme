@@ -1,7 +1,8 @@
 import 'package:app_jam_deneme_1/profile_flutter.dart';
-import 'package:app_jam_deneme_1/service/auth.dart';
+import 'package:app_jam_deneme_1/weather_api/weather_page.dart';
 import 'package:flutter/material.dart';
 
+import 'Pages/name_surname.dart';
 import 'about_us.dart';
 import 'home_page.dart';
 import 'loginPage.dart';
@@ -14,7 +15,29 @@ class NewDraw extends StatefulWidget {
 }
 
 class _NewDrawState extends State<NewDraw> {
-  AuthService _authService = AuthService();
+  String adSoyad = '';
+  String email = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getAdSoyad();
+    getEmail();
+  }
+
+  void getAdSoyad() async {
+    String result = await getAdSoyadFromFirestore();
+    setState(() {
+      adSoyad = result;
+    });
+  }
+
+  void getEmail() async {
+    String result = await getEmailFromFirestore();
+    setState(() {
+      email = result;
+    });
+  }
 
   @override
   Widget build(BuildContext context) => Drawer(
@@ -29,7 +52,7 @@ class _NewDrawState extends State<NewDraw> {
         ),
       );
   Widget buildHeader(BuildContext context) => Material(
-        color: Colors.black,
+        color: Colors.grey.shade900,
         child: Container(
           padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top, bottom: 24),
@@ -40,15 +63,15 @@ class _NewDrawState extends State<NewDraw> {
                 backgroundImage: AssetImage('assets/imagess.jpg'),
               ),
               SizedBox(
-                width: 20,
+                width: 10,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Tuğba Yıldız',
+                    adSoyad,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -57,7 +80,7 @@ class _NewDrawState extends State<NewDraw> {
                     height: 20,
                   ),
                   Text(
-                    'tugba@gmail.com',
+                    email,
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -95,6 +118,12 @@ class _NewDrawState extends State<NewDraw> {
               title: const Text('Hakkımızda'),
               onTap: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => AboutUs())),
+            ),
+            ListTile(
+              leading: const Icon(Icons.cloud),
+              title: const Text('Hava Durumu'),
+              onTap: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => WeatherPage())),
             ),
             ListTile(
               leading: const Icon(Icons.logout),

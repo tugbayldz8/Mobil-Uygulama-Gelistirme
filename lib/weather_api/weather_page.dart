@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _incrementCounter() async {
     String adres =
-        'https://api.openweathermap.org/data/2.5/onecall?lat=64.20084&lon=149.4936717&appid=5e6cd7584bee25e9d7f28e9edbbd0709&units=metric&lang=en&exclude=minutely';
+        'https://api.openweathermap.org/data/2.5/onecall?lat=64.20084&lon=149.4936717&appid=5e6cd7584bee25e9d7f28e9edbbd0709&units=metric&exclude=minutely&lang=tr';
     Response cevap = await get(Uri.parse(adres));
 
     if (cevap.statusCode == 200) {
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView(
         children: <Widget>[
           Text(
-            'Gelen Cevap:',
+            'Hava Durumu:',
             style: Theme.of(context).textTheme.headline4,
           ),
           if (_anlikGunlukSaatlik != null)
