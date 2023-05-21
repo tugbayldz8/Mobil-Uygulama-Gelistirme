@@ -1,11 +1,11 @@
 import 'package:app_jam_deneme_1/profile_flutter.dart';
-import 'package:app_jam_deneme_1/weather_api/weather_page.dart';
 import 'package:flutter/material.dart';
 
 import 'Pages/name_surname.dart';
 import 'about_us.dart';
 import 'home_page.dart';
 import 'loginPage.dart';
+import 'model/home_weather.dart';
 
 class NewDraw extends StatefulWidget {
   const NewDraw({Key? key}) : super(key: key);
@@ -123,7 +123,7 @@ class _NewDrawState extends State<NewDraw> {
               leading: const Icon(Icons.cloud),
               title: const Text('Hava Durumu'),
               onTap: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => WeatherPage())),
+                  .push(MaterialPageRoute(builder: (context) => HomeScreen())),
             ),
             ListTile(
               leading: const Icon(Icons.logout),

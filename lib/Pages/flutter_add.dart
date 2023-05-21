@@ -2,6 +2,7 @@ import 'package:app_jam_deneme_1/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../profile_flutter.dart';
 import '../service/status_service.dart';
 
 class FlutterAddPage extends StatefulWidget {
@@ -93,17 +94,7 @@ class _FlutterAddPageState extends State<FlutterAddPage> {
                           });
                         },
                       ),
-                      // Container(
-                      //   height: 300,
-                      //   child: SingleChildScrollView(
-                      //     child: TextField(
-                      //       style: TextStyle(fontSize: 20),
-                      //       controller: ekipSayisiController,
-                      //       keyboardType: TextInputType.number,
-                      //       maxLines: null,
-                      //     ),
-                      //   ),
-                      // ),
+
                     ),
                   ],
                 ),
@@ -158,7 +149,7 @@ class _FlutterAddPageState extends State<FlutterAddPage> {
                     });
 
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Draw()));
+                        MaterialPageRoute(builder: (context) => FProfilim()));
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 5),

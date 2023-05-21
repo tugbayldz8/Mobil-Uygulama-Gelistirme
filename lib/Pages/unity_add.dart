@@ -1,4 +1,5 @@
 import 'package:app_jam_deneme_1/Pages/flutter_list.dart';
+import 'package:app_jam_deneme_1/profile_unity.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -146,7 +147,7 @@ class _UnityAddPageState extends State<UnityAddPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => FlutterListPage()));
+                            builder: (context) => UProfilim()));
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 5),
