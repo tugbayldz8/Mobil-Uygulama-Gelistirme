@@ -1,9 +1,9 @@
-import 'package:app_jam_deneme_1/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../profile_flutter.dart';
 import '../service/status_service.dart';
+import 'name_surname.dart';
 
 class FlutterAddPage extends StatefulWidget {
   const FlutterAddPage({Key? key}) : super(key: key);
@@ -20,6 +20,20 @@ class _FlutterAddPageState extends State<FlutterAddPage> {
 
   String? selectedValue;
   List<String> dropdownItems = ['1-2', '2-3', '3-4', '4-5', '5-6'];
+
+  String adSoyad = '';
+  @override
+  void initState() {
+    super.initState();
+    getAdSoyad();
+  }
+
+  void getAdSoyad() async {
+    String result = await getAdSoyadFromFirestore();
+    setState(() {
+      adSoyad = result;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +55,7 @@ class _FlutterAddPageState extends State<FlutterAddPage> {
               ),
               SizedBox(height: 10),
               Text(
-                "Hoşgeldin Tuğba :)",
+                "Hoşgeldin $adSoyad",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
@@ -94,7 +108,6 @@ class _FlutterAddPageState extends State<FlutterAddPage> {
                           });
                         },
                       ),
-
                     ),
                   ],
                 ),

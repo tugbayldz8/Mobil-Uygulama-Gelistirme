@@ -1,9 +1,9 @@
-import 'package:app_jam_deneme_1/Pages/flutter_list.dart';
 import 'package:app_jam_deneme_1/profile_unity.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../service/status_service.dart';
+import 'name_surname.dart';
 
 class UnityAddPage extends StatefulWidget {
   const UnityAddPage({Key? key}) : super(key: key);
@@ -20,6 +20,20 @@ class _UnityAddPageState extends State<UnityAddPage> {
 
   String? selectedValue;
   List<String> dropdownItems = ['1-2', '2-3', '3-4', '4-5', '5-6'];
+
+  String adSoyad = '';
+  @override
+  void initState() {
+    super.initState();
+    getAdSoyad();
+  }
+
+  void getAdSoyad() async {
+    String result = await getAdSoyadFromFirestore();
+    setState(() {
+      adSoyad = result;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +55,7 @@ class _UnityAddPageState extends State<UnityAddPage> {
               ),
               SizedBox(height: 10),
               Text(
-                "Hoşgeldin Tuğba :)",
+                "Hoşgeldin $adSoyad",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
@@ -144,10 +158,8 @@ class _UnityAddPageState extends State<UnityAddPage> {
                           fontSize: 14);
                     });
 
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UProfilim()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UProfilim()));
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 5),

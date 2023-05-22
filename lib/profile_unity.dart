@@ -70,7 +70,7 @@ class _UProfilimState extends State<UProfilim> {
                   children: [
                     Container(
                       child: Image.asset(
-                        'assets/fpp.jpg',
+                        'assets/upp.jpg',
                         fit: BoxFit.cover,
                       ),
                       decoration: BoxDecoration(color: Colors.yellow),

@@ -1,4 +1,4 @@
-import 'package:app_jam_deneme_1/home_page.dart';
+import 'package:app_jam_deneme_1/loginPage.dart';
 import 'package:app_jam_deneme_1/service/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -199,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 return Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Draw()));
+                                        builder: (context) => LoginPage()));
                               });
                             },
                             child: Container(
