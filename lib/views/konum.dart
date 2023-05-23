@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -19,59 +17,31 @@ class _KonumPageState extends State<KonumPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Konum'),
-          backgroundColor: Colors.grey.shade900,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.green),
-                onPressed: () => getLocation(),
-                child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 40),
-                    child: Text("İzinler")),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.green),
-                onPressed: () {
-                  LocGet();
-                },
-                child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 40),
-                    child: Text('Konum Göster')),
-              ),
-            ],
+      appBar: AppBar(
+        title: Text('Konum'),
+        backgroundColor: Colors.grey.shade900,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+                'assets/harita.jpg'), // Resim dosyasının yolunu buraya girin
+            fit: BoxFit.cover,
           ),
-        ));
-  }
-
-  getLocation() {
-    Geolocator.requestPermission().then((request) {
-      print("REQUEST : $request");
-      if (Platform.isIOS) {
-        if (request != LocationPermission.whileInUse) {
-          print("NOT LOCATION PERMISSION");
-          return;
-        } else {
-          print("PERMISSION OK");
-          geolocatorController.permissionOK();
-        }
-      } else {
-        if (request != LocationPermission.always) {
-          print("NOT LOCATION PERMISSION");
-          return;
-        } else {
-          print("PERMISSION OK");
-          geolocatorController.permissionOK();
-        }
-      }
-    });
+        ),
+        child: Center(
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Colors.green),
+            onPressed: () {
+              LocGet();
+            },
+            child: Container(
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 40),
+                child: Text('Konum Göster')),
+          ),
+        ),
+      ),
+    );
   }
 }
 
