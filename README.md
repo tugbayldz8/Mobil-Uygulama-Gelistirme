@@ -15,3 +15,6 @@
 ![Ekran Görüntüsü (71)](https://github.com/tugbayldz8/Mobil-Uygulama-Gelistirme/assets/78541390/d879586e-3e4c-41de-9120-8e9ff9227871)
 ![Ekran Görüntüsü (72)](https://github.com/tugbayldz8/Mobil-Uygulama-Gelistirme/assets/78541390/f325fea0-3f1b-4fa5-8057-af6f7f69c217)
 ![Ekran Görüntüsü (73)](https://github.com/tugbayldz8/Mobil-Uygulama-Gelistirme/assets/78541390/0b1aba55-f8c2-4c50-93da-2a1a65fcae69)
+![Ekran Görüntüsü (76)](https://github.com/tugbayldz8/Mobil-Uygulama-Gelistirme/assets/78541390/7d2b4f64-0a47-4d7e-abcd-6a35049b7316)
+![Ekran Görüntüsü (79)](https://github.com/tugbayldz8/Mobil-Uygulama-Gelistirme/assets/78541390/36868551-9a8b-44e6-9b66-eff65de165b9)
+![Ekran Görüntüsü (78)](https://github.com/tugbayldz8/Mobil-Uygulama-Gelistirme/assets/78541390/903e1fec-a83c-4d78-bf32-d41355d4632a)
